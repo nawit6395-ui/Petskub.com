@@ -1,0 +1,30 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[[redirects]]
+  from = "/share/article"
+  to = "/.netlify/functions/article-share"
+  status = 200
+
+[[redirects]]
+  from = "/share/article/*"
+  to = "/.netlify/functions/article-share"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/share/pet"
+  to = "/.netlify/functions/pet-share"
+  status = 200
+
+[[redirects]]
+  from = "/share/pet/*"
+  to = "/.netlify/functions/pet-share"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
