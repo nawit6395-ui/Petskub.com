@@ -278,16 +278,13 @@ const Navbar = () => {
                   <Menu className="h-5 w-5" />
                 </Button>
               </SheetTrigger>
-              <SheetContent
-                side="left"
-                className="border-none bg-transparent p-0"
-              >
-                <div className="fixed inset-y-0 left-0 w-full max-w-sm bg-white rounded-r-3xl shadow-[0_25px_60px_rgba(15,23,42,0.25)] flex flex-col">
+              <SheetContent side="left" className="border-none bg-transparent p-0">
+                <div className="fixed inset-y-0 left-0 flex h-dvh w-full max-w-sm flex-col overflow-hidden rounded-r-3xl bg-white shadow-[0_25px_60px_rgba(15,23,42,0.25)]">
                   <SheetHeader className="sr-only">
                     <SheetTitle>เมนูนำทาง</SheetTitle>
                     <SheetDescription>เลือกหมวดหมู่สำหรับการใช้งานบนมือถือ</SheetDescription>
                   </SheetHeader>
-                  <div className="flex-1 overflow-y-auto px-6 py-6 space-y-4">
+                  <div className="flex-1 min-h-0 overflow-y-auto px-6 py-6 space-y-4">
                     {navLinks.map((link) => (
                       <Link key={link.path} to={link.path} onClick={() => setMobileMenuOpen(false)}>
                         <div
@@ -325,7 +322,10 @@ const Navbar = () => {
                       ))}
                     </div>
                   )}
-                  <div className="border-t px-6 py-6">
+                  <div
+                    className="border-t px-6 pt-6"
+                    style={{ paddingBottom: "calc(env(safe-area-inset-bottom, 0) + 1.5rem)" }}
+                  >
                     <div className="rounded-3xl bg-gradient-to-r from-rose-600 via-orange-500 to-amber-500 p-1 shadow-[0_15px_30px_rgba(234,88,12,0.35)]">
                       <Button
                         asChild
