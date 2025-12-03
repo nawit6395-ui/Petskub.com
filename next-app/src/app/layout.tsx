@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import "./globals.css";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
   description: siteDescription,
   metadataBase: new URL("https://petskub.com"),
   applicationName: "Petskub",
+  manifest: "/site.webmanifest",
   icons: {
     icon: [
       { url: "/favicon.ico" },
@@ -55,6 +57,18 @@ export const metadata: Metadata = {
     "อาสาสมัครดูแลสัตว์",
   ],
   authors: [{ name: "Petskub Community" }],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
+  },
+  category: "animals",
   alternates: {
     canonical: "https://petskub.com/",
   },
@@ -72,6 +86,33 @@ export default function RootLayout({
   return (
     <html lang="th">
       <body className="antialiased">
+        <Script
+          id="ld-json-organization"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "PetsKub",
+              url: "https://petskub.com/",
+              logo: "https://img5.pic.in.th/file/secure-sv1/LOGO_Petskub.png",
+              description:
+                "ชุมชนช่วยเหลือแมวและสุนัขจรในประเทศไทย ร่วมกันหาบ้านที่อบอุ่น ลดปัญหาสัตว์จรจัด",
+              sameAs: [
+                "https://facebook.com/PetsKub",
+                "https://www.instagram.com/PetsKub",
+                "https://twitter.com/PetsKub",
+              ],
+              contactPoint: {
+                "@type": "ContactPoint",
+                contactType: "customer support",
+                areaServed: "TH",
+                availableLanguage: ["th", "en"],
+              },
+            }),
+          }}
+        />
         <SiteHeader />
         <main>{children}</main>
       </body>
