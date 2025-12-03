@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import {
   Mail,
   Lock,
@@ -113,7 +114,7 @@ const Login = () => {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [participantsToday, setParticipantsToday] = useState<number | null>(null);
   const [isFetchingStats, setIsFetchingStats] = useState(true);
-  const [isResetSectionVisible, setIsResetSectionVisible] = useState(false);
+  const [isResetDialogOpen, setIsResetDialogOpen] = useState(false);
   const [resetEmail, setResetEmail] = useState("");
   const [isSendingReset, setIsSendingReset] = useState(false);
   
@@ -251,7 +252,7 @@ const Login = () => {
   };
 
   const handleForgotPasswordClick = () => {
-    setIsResetSectionVisible((prev) => !prev);
+    setIsResetDialogOpen(true);
     setResetEmail((prev) => (prev ? prev : email));
   };
 
@@ -277,7 +278,8 @@ const Login = () => {
       alert.success("ส่งลิงก์รีเซ็ตรหัสผ่านแล้ว", {
         description: "โปรดตรวจสอบกล่องจดหมายและทำตามขั้นตอนภายใน 5 นาที",
       });
-      setIsResetSectionVisible(false);
+      setIsResetDialogOpen(false);
+      setResetEmail("");
     } catch (error: any) {
       alert.error("ไม่สามารถส่งลิงก์รีเซ็ตรหัสผ่านได้", {
         description: error.message,
@@ -566,38 +568,65 @@ const Login = () => {
               </div>
             )}
 
-            {isResetSectionVisible && (
-              <div className="rounded-2xl border border-emerald-200 bg-emerald-50/30 p-4 text-sm text-slate-700">
-                  <p className="font-semibold text-primary">ส่งลิงก์รีเซ็ตรหัสผ่าน</p>
-                <p className="text-muted-foreground">
-                  ใส่อีเมลของคุณ เราจะส่งลิงก์รีเซ็ตไปให้ภายในไม่กี่วินาที
-                </p>
-                <div className="mt-3 flex flex-col gap-3 sm:flex-row">
-                  <Input
-                    type="email"
-                    placeholder="your@email.com"
-                    value={resetEmail || email}
-                    onChange={(e) => setResetEmail(e.target.value)}
-                    className="font-prompt"
-                  />
-                  <Button
-                    type="button"
-                    disabled={isSendingReset}
-                    onClick={handleSendPasswordReset}
-                    className="whitespace-nowrap bg-primary text-primary-foreground px-4 text-sm font-semibold"
-                  >
-                    {isSendingReset ? "กำลังส่ง..." : "ส่งลิงก์"}
-                  </Button>
-                </div>
-              </div>
-            )}
-
             <Button type="submit" className="w-full gap-2 rounded-2xl bg-primary px-6 py-6 text-base font-semibold text-primary-foreground">
               {isLogin ? "เข้าสู่ระบบทันที" : "สร้างบัญชี Petskub"}
               <ArrowRight className="h-4 w-4" />
             </Button>
             {/* reCAPTCHA has been removed; no widget necessary here */}
           </form>
+
+          <Dialog
+            open={isResetDialogOpen}
+            onOpenChange={(open) => {
+              setIsResetDialogOpen(open);
+              if (!open) {
+                setIsSendingReset(false);
+                setResetEmail("");
+              }
+            }}
+          >
+            <DialogContent className="max-w-md rounded-3xl">
+              <DialogHeader>
+                <DialogTitle className="font-prompt text-xl">รีเซ็ตรหัสผ่าน</DialogTitle>
+                <DialogDescription className="font-prompt text-sm">
+                  กรอกอีเมลที่ใช้สมัครเพื่อรับลิงก์รีเซ็ตรหัสผ่านภายในไม่กี่นาที
+                </DialogDescription>
+              </DialogHeader>
+              <div className="space-y-3">
+                <Label htmlFor="reset-email" className="font-prompt text-sm">อีเมล</Label>
+                <Input
+                  id="reset-email"
+                  type="email"
+                  value={resetEmail}
+                  onChange={(e) => setResetEmail(e.target.value)}
+                  placeholder="your@email.com"
+                  className="font-prompt"
+                  autoFocus
+                />
+              </div>
+              <p className="text-xs text-muted-foreground font-prompt">
+                หากไม่พบอีเมลในกล่องจดหมาย กรุณาตรวจสอบโฟลเดอร์สแปมหรืออีเมลขยะ
+              </p>
+              <DialogFooter className="gap-2">
+                <Button
+                  type="button"
+                  variant="outline"
+                  className="font-prompt"
+                  onClick={() => setIsResetDialogOpen(false)}
+                >
+                  ยกเลิก
+                </Button>
+                <Button
+                  type="button"
+                  className="font-prompt"
+                  disabled={isSendingReset}
+                  onClick={handleSendPasswordReset}
+                >
+                  {isSendingReset ? "กำลังส่ง..." : "ส่งลิงก์รีเซ็ต"}
+                </Button>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
 
           <p className="mt-6 text-center text-sm text-muted-foreground">
             การเข้าสู่ระบบถือว่ายอมรับ <Link to="/privacy" className="font-semibold text-emerald-700 underline-offset-2 hover:underline">นโยบายความเป็นส่วนตัว</Link>
