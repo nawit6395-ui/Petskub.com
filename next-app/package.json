@@ -8,7 +8,8 @@
     "build": "next build",
     "vercel-build": "cd .. && npm install --omit=dev && cd next-app && next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "postinstall": "node ./scripts/install-shared-deps.cjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.83.0",
