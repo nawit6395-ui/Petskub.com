@@ -22,15 +22,36 @@ const isNativeRoute = (pathname: string) => {
   });
 };
 
+const STATIC_EXTENSIONS = [
+  ".txt",
+  ".xml",
+  ".json",
+  ".webmanifest",
+  ".ico",
+  ".svg",
+  ".png",
+  ".jpg",
+  ".jpeg",
+  ".gif",
+  ".webp",
+  ".avif",
+  ".woff",
+  ".woff2",
+  ".ttf",
+];
+
 export function middleware(request: NextRequest) {
   const { pathname, search } = request.nextUrl;
   console.log("[middleware-test] hit", pathname, legacyOrigin);
+
+  const isStaticAsset = STATIC_EXTENSIONS.some((ext) => pathname.endsWith(ext));
 
   if (
     pathname.startsWith("/_next") ||
     pathname.startsWith("/static") ||
     pathname.startsWith("/api") ||
-    pathname === "/favicon.ico"
+    pathname === "/favicon.ico" ||
+    isStaticAsset
   ) {
     return NextResponse.next();
   }
