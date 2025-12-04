@@ -1,9 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Prompt:wght@400;500;600;700&family=Sarabun:wght@400;500;600;700&display=swap");
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
+/* Custom scrollbar for cards and scroll areas */
 .scrollbar-custom {
   scrollbar-width: thin;
   scrollbar-color: hsl(var(--primary)) hsl(var(--muted));
@@ -14,7 +11,6 @@
   background: hsl(var(--muted));
   border-radius: 8px;
 }
-
 .scrollbar-custom::-webkit-scrollbar-thumb {
   background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--brand-mint)) 80%);
   border-radius: 8px;
@@ -24,6 +20,10 @@
 .scrollbar-custom::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(135deg, hsl(var(--primary-hover)), hsl(var(--brand-mint)) 80%);
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @layer base {
   :root {
@@ -79,7 +79,7 @@
     --gradient-sunrise: linear-gradient(130deg, hsl(var(--brand-coral)), hsl(var(--brand-blush)));
     --gradient-mint: linear-gradient(140deg, hsl(var(--brand-mint)), hsl(var(--brand-sky)));
     --gradient-lilac: linear-gradient(145deg, hsl(var(--brand-lilac)), hsl(var(--brand-blush)));
-
+    
     --shadow-card: 0 2px 8px -2px hsl(22 15% 20% / 0.08);
     --shadow-hover: 0 8px 24px -4px hsl(22 15% 20% / 0.14);
     --shadow-soft: 0 15px 45px -20px hsl(22 15% 20% / 0.4);
@@ -137,7 +137,9 @@
     --sidebar-border: 20 15% 20%;
     --sidebar-ring: 28 90% 55%;
   }
+}
 
+@layer base {
   * {
     @apply border-border;
   }
@@ -158,8 +160,7 @@
 
 @layer utilities {
   @keyframes float-slow {
-    0%,
-    100% {
+    0%, 100% {
       transform: translateY(0px);
     }
     50% {
@@ -212,6 +213,18 @@
   .bg-surface-sand {
     background-color: hsl(var(--surface-sand));
   }
+
+  .animate-float-slow {
+    animation: float-slow 10s ease-in-out infinite;
+  }
+
+  .animate-float-delayed {
+    animation: float-delayed 12s ease-in-out infinite;
+  }
+
+  .animate-shimmer-soft {
+    animation: shimmer-soft 8s linear infinite;
+  }
 }
 
 @layer components {
@@ -234,16 +247,4 @@
   .chip-soft-emerald {
     @apply chip-soft bg-primary/10 text-primary;
   }
-}
-
-.animate-float-slow {
-  animation: float-slow 10s ease-in-out infinite;
-}
-
-.animate-float-delayed {
-  animation: float-delayed 12s ease-in-out infinite;
-}
-
-.animate-shimmer-soft {
-  animation: shimmer-soft 8s linear infinite;
 }

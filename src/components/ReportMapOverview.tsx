@@ -1,6 +1,6 @@
 import { memo, useMemo } from "react";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-import type { Report } from "@/hooks/useReports";
+import type { Report } from "@shared/hooks/useReports";
 import {
   locationMarkerIcon,
   defaultMapCenter,

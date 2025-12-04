@@ -1,4 +1,4 @@
-import { useCats } from "@/hooks/useCats";
+import { useCats } from "@shared/hooks/useCats";
 import CatCard from "@/components/CatCard";
 import { Heart, Sparkles } from "lucide-react";
 import { useState } from "react";

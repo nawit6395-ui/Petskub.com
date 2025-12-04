@@ -3,7 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Search, BookOpen, Plus, PenSquare } from "lucide-react";
-import { useArticles } from "@/hooks/useArticles";
+import { useArticles } from "@shared/hooks/useArticles";
 import { useAuth } from "@/hooks/useAuth";
 import { useIsAdmin } from "@/hooks/useUserRole";
 import { Link, useNavigate } from "react-router-dom";

@@ -6,7 +6,7 @@ import { MapPin, Heart, MessageCircle, Eye, Check, RotateCcw, ShieldCheck, Share
 import { useAuth } from "@/hooks/useAuth";
 import { useState } from "react";
 import { ImageGallery } from "@/components/ImageGallery";
-import { useDeleteCat, useUpdateCat } from "@/hooks/useCats";
+import { useDeleteCat, useUpdateCat } from "@shared/hooks/useCats";
 import { useIsAdmin } from "@/hooks/useUserRole";
 import { alert } from "@/lib/alerts";
 import { useCreateConversation } from "@/hooks/useConversations";

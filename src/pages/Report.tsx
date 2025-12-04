@@ -9,8 +9,8 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { MapPin, Send, Navigation, Map as MapIcon, ChevronLeft, ChevronRight } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
-import { useCreateReport, useReports } from "@/hooks/useReports";
-import type { Report as ReportType } from "@/hooks/useReports";
+import { useCreateReport, useReports } from "@shared/hooks/useReports";
+import type { Report as ReportType } from "@shared/hooks/useReports";
 import { Link } from "react-router-dom";
 import { z } from "zod";
 import { alert } from "@/lib/alerts";

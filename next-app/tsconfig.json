@@ -19,7 +19,9 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@legacy/*": ["../src/*"],
+      "@shared/*": ["../shared/*"]
     }
   },
   "include": [
@@ -30,8 +32,5 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts"
   ],
-  "exclude": [
-    "node_modules",
-    "src/legacy"
-  ]
+  "exclude": ["node_modules"]
 }

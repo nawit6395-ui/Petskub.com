@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import CatCard from "@/components/CatCard";
 import { Search, SlidersHorizontal } from "lucide-react";
-import { useCats } from "@/hooks/useCats";
+import { useCats } from "@shared/hooks/useCats";
 import { THAI_PROVINCES } from "@/constants/thaiProvinces";
 import adoptHeroPrimaryPicture from "@/assets/hero-cat.jpg?w=640;960;1200&format=avif;webp;jpg&as=picture";
 import adoptHeroSecondaryPicture from "@/assets/hero-cat-pastel.jpg?w=360;540;720&format=avif;webp;jpg&as=picture";

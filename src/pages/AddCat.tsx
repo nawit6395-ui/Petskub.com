@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useAuth } from "@/hooks/useAuth";
-import { useCreateCat } from "@/hooks/useCats";
+import { useCreateCat } from "@shared/hooks/useCats";
 import { Link, useNavigate } from "react-router-dom";
 import { Heart } from "lucide-react";
 import { MultiImageUpload } from "@/components/MultiImageUpload";

@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { ArrowLeft, Eye, Share2, Facebook, Twitter, Copy, CheckCheck, BookOpen } from "lucide-react";
 import { alert } from "@/lib/alerts";
-import type { Article } from "@/hooks/useArticles";
+import type { Article } from "@shared/hooks/useArticles";
 
 type ContentBlock =
   | { type: "heading"; level: 2 | 3 | 4; text: string }

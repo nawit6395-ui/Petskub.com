@@ -6,8 +6,8 @@ import { FaHeart, FaCat, FaMapMarkerAlt, FaExclamationTriangle } from "react-ico
 import CatCard from "@/components/CatCard";
 import { Link } from "react-router-dom";
 import heroImageCozyPicture from "@/assets/hero-cat.jpg?w=480;768;1024;1440&format=webp;avif&as=picture";
-import { useCats } from "@/hooks/useCats";
-import { useReports } from "@/hooks/useReports";
+import { useCats } from "@shared/hooks/useCats";
+import { useReports } from "@shared/hooks/useReports";
 import ReportMapOverview from "@/components/ReportMapOverview";
 import { ResponsivePicture } from "@/components/ResponsivePicture";
 import type { Picture } from "imagetools-core";

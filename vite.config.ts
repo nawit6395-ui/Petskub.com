@@ -10,11 +10,17 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8081,
     strictPort: false,
+    hmr: {
+      protocol: "ws",
+      host: "localhost",
+      clientPort: 8081,
+    },
   },
   plugins: [react(), imagetools(), mode === "development" && componentTagger()].filter(Boolean),
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
+      "@shared": path.resolve(__dirname, "./shared"),
     },
   },
 }));

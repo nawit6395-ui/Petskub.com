@@ -40,7 +40,7 @@ import {
   useReports,
   useUpdateReportStatus,
   type Report,
-} from "@/hooks/useReports";
+} from "@shared/hooks/useReports";
 import { useAuth } from "@/hooks/useAuth";
 
 const REPORT_THUMBNAIL_PLACEHOLDER =
