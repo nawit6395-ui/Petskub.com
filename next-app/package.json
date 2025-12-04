@@ -6,6 +6,7 @@
     "dev": "next dev --webpack",
     "dev:turbo": "next dev --turbo",
     "build": "next build",
+    "vercel-build": "cd .. && npm install --omit=dev && cd next-app && next build",
     "start": "next start",
     "lint": "eslint"
   },
