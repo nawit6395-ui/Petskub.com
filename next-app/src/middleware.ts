@@ -28,12 +28,16 @@ const isNativeRoute = (pathname: string) => {
 
 export function middleware(request: NextRequest) {
   const { pathname, search } = request.nextUrl;
+  const hasFileExtension = /\.[^\/]+$/.test(pathname);
 
   if (
     pathname.startsWith("/_next") ||
     pathname.startsWith("/static") ||
     pathname.startsWith("/api") ||
-    pathname === "/favicon.ico"
+    pathname === "/favicon.ico" ||
+    pathname === "/robots.txt" ||
+    pathname === "/site.webmanifest" ||
+    hasFileExtension
   ) {
     return NextResponse.next();
   }
