@@ -12,15 +12,11 @@ if (!legacyOrigin) {
   console.log("[proxy] Proxying legacy routes to", legacyOrigin);
 }
 
-const nativeRoutes: string[] = ["/"];
+const nativeRoutes: string[] = [];
 
 const isNativeRoute = (pathname: string) => {
-  if (pathname === "/") {
-    return nativeRoutes.includes("/");
-  }
-
   return nativeRoutes.some((route) => {
-    if (route === "/") return false;
+    if (route === "/") return pathname === "/";
     if (!pathname.startsWith(route)) return false;
     return pathname.length === route.length || pathname.startsWith(`${route}/`);
   });
