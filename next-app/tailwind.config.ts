@@ -1,10 +1,10 @@
 import type { Config } from "tailwindcss";
 import defaultTheme from "tailwindcss/defaultTheme";
-import tailwindcssAnimate from "tailwindcss-animate";
 
-const config: Config = {
+export default {
   darkMode: ["class"],
-  content: ["./src/**/*.{ts,tsx}", "../src/**/*.{ts,tsx}"],
+  content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
+  prefix: "",
   theme: {
     container: {
       center: true,
@@ -34,6 +34,7 @@ const config: Config = {
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
+          hover: "hsl(var(--primary-hover))",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
@@ -83,16 +84,16 @@ const config: Config = {
         },
       },
       backgroundImage: {
-        "gradient-warm": "var(--gradient-warm)",
-        "gradient-soft": "var(--gradient-soft)",
-        "gradient-sunrise": "var(--gradient-sunrise)",
-        "gradient-mint": "var(--gradient-mint)",
-        "gradient-lilac": "var(--gradient-lilac)",
+        'gradient-warm': 'var(--gradient-warm)',
+        'gradient-soft': 'var(--gradient-soft)',
+        'gradient-sunrise': 'var(--gradient-sunrise)',
+        'gradient-mint': 'var(--gradient-mint)',
+        'gradient-lilac': 'var(--gradient-lilac)',
       },
       boxShadow: {
-        card: "var(--shadow-card)",
-        hover: "var(--shadow-hover)",
-        soft: "var(--shadow-soft)",
+        'card': 'var(--shadow-card)',
+        'hover': 'var(--shadow-hover)',
+        'soft': 'var(--shadow-soft)',
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -101,38 +102,27 @@ const config: Config = {
       },
       keyframes: {
         "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
+          from: {
+            height: "0",
+          },
+          to: {
+            height: "var(--radix-accordion-content-height)",
+          },
         },
         "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
-        "float-slow": {
-          "0%, 100%": { transform: "translateY(0px)" },
-          "50%": { transform: "translateY(-16px)" },
-        },
-        "float-delayed": {
-          "0%": { transform: "translateY(12px)" },
-          "50%": { transform: "translateY(-12px)" },
-          "100%": { transform: "translateY(12px)" },
-        },
-        "shimmer-soft": {
-          "0%": { transform: "translateX(-20%)", opacity: "0.35" },
-          "50%": { opacity: "0.6" },
-          "100%": { transform: "translateX(120%)", opacity: "0.35" },
+          from: {
+            height: "var(--radix-accordion-content-height)",
+          },
+          to: {
+            height: "0",
+          },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "float-slow": "float-slow 10s ease-in-out infinite",
-        "float-delayed": "float-delayed 12s ease-in-out infinite",
-        "shimmer-soft": "shimmer-soft 8s linear infinite",
       },
     },
   },
-  plugins: [tailwindcssAnimate],
-};
-
-export default config;
+  plugins: [require("tailwindcss-animate")],
+} satisfies Config;

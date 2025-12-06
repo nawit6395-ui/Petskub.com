@@ -4,6 +4,9 @@ import "./globals.css";
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import BackToTopButton from "@/components/BackToTopButton";
+import CookieConsent from "@/components/CookieConsent";
+import { Providers } from "@/components/Providers";
 
 const siteUrl = "https://petskub.com";
 const siteName = "PetsKub";
@@ -110,9 +113,15 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-background text-foreground font-sans antialiased">
-        <Navbar />
-        <main className="min-h-screen">{children}</main>
-        <Footer />
+        <Providers>
+          <div className="flex flex-col min-h-screen">
+            <Navbar />
+            <main className="flex-1">{children}</main>
+            <Footer />
+            <BackToTopButton />
+            <CookieConsent />
+          </div>
+        </Providers>
         <Script id="organization-ld-json" type="application/ld+json" suppressHydrationWarning>
           {JSON.stringify(organizationJsonLd)}
         </Script>

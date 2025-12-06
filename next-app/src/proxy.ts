@@ -12,7 +12,27 @@ if (!legacyOrigin) {
   console.log("[proxy] Proxying legacy routes to", legacyOrigin);
 }
 
-const nativeRoutes: string[] = ["/"];
+const defaultNativeRoutes = [
+  "/",
+  "/adopt",
+  "/report",
+  "/reports",
+  "/reports/map",
+  "/help",
+  "/knowledge",
+  "/success-stories",
+  "/forum",
+  "/login",
+  "/register",
+  "/admin",
+];
+
+const envNativeRoutes = (process.env.NATIVE_ROUTES || process.env.NEXT_PUBLIC_NATIVE_ROUTES || "")
+  .split(",")
+  .map((route) => route.trim())
+  .filter(Boolean);
+
+const nativeRoutes = Array.from(new Set([...defaultNativeRoutes, ...envNativeRoutes]));
 
 const isNativeRoute = (pathname: string) => {
   if (pathname === "/") {
