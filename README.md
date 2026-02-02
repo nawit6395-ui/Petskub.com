@@ -4,6 +4,8 @@
 
 **URL**: https://lovable.dev/projects/fa6a9b55-e6b4-47a3-953b-51442286252d
 
+**GitHub**: https://github.com/nawit6395-ui/Petskub.com
+
 ## How can I edit this code?
 
 There are several ways of editing your application.
@@ -63,6 +65,41 @@ This project is built with:
 ## How can I deploy this project?
 
 Simply open [Lovable](https://lovable.dev/projects/fa6a9b55-e6b4-47a3-953b-51442286252d) and click on Share -> Publish.
+
+### Deploy to Vercel (recommended)
+
+This repository is a Vite SPA (output: `dist/`) and includes Vercel Serverless Functions under `api/` for share previews (Open Graph).
+
+1) Import the GitHub repo in Vercel
+
+- Project → Add New → Project → Import `nawit6395-ui/Petskub.com`
+
+2) Build settings
+
+- **Install Command**: `npm install`
+- **Build Command**: `npm run build`
+- **Output Directory**: `dist`
+
+3) Environment Variables (Vercel → Project Settings → Environment Variables)
+
+Client (Vite):
+
+- `VITE_SUPABASE_URL`
+- `VITE_SUPABASE_ANON_KEY` (or `VITE_SUPABASE_PUBLISHABLE_KEY`)
+- `VITE_SITE_URL` (e.g. `https://petskub.com`)
+- `VITE_MAPTILER_API_KEY` (optional)
+
+Serverless share endpoints (Vercel Functions in `api/`):
+
+- `SUPABASE_SERVICE_ROLE_KEY` (recommended so OG endpoints can always read data)
+
+4) Verify OG share previews
+
+- Share URL pattern: `https://<domain>/share/pet/<id>` and `https://<domain>/share/article/<id>`
+
+### Security note
+
+- Do **not** commit `.env` files. Use `.env.example` for a template and set secrets in Vercel Environment Variables.
 
 ## Can I connect a custom domain to my Lovable project?
 
