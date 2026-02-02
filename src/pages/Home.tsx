@@ -163,14 +163,14 @@ const Home = () => {
                 <span className="font-prompt text-sm font-medium text-primary">ชุมชนคนรักสัตว์</span>
               </div>
               <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl font-extrabold leading-[1.15] tracking-[0.04em] text-foreground">
-                <span className="block">ช่วยแมวและสุนัขจร</span>
+                <span className="block">Petskub – พื้นที่สื่อกลาง</span>
                 <span className="mt-3 block text-primary sm:mt-4">
-                  ให้ได้บ้านที่อบอุ่น
+                  หมาหาบ้าน แมวหาบ้าน
                   <span className="ml-2 text-lilac">🐾</span>
                 </span>
               </h1>
               <p className="font-prompt text-base sm:text-lg leading-relaxed text-muted-foreground">
-                ร่วมเป็นส่วนหนึ่งของชุมชนที่ใส่ใจแมวและสุนัขจร ช่วยกันหาบ้านที่อบอุ่น ลดปัญหาสัตว์จรจัดในเมือง
+                ร่วมเป็นส่วนหนึ่งในการเปลี่ยนแปลงชีวิตเพื่อนร่วมโลก ค้นหา รับเลี้ยงสุนัข และ รับเลี้ยงแมว ที่กำลังรอความรัก หรือ ลงประกาศหาบ้านให้สัตว์เลี้ยง ของคุณได้ฟรี สะดวก และปลอดภัยที่นี่
               </p>
               <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:flex-wrap">
                 <Link to="/adopt" className="w-full sm:w-auto">
@@ -179,7 +179,7 @@ const Home = () => {
                     className="h-14 w-full gap-2 px-8 text-base font-prompt bg-primary text-primary-foreground shadow-soft border-0 transition-transform hover:scale-105 hover:bg-primary-hover"
                   >
                     <Heart className="h-5 w-5" />
-                    หาสัตว์เลี้ยงรับเลี้ยง
+                    ค้นหาสัตว์เลี้ยงใกล้คุณ
                   </Button>
                 </Link>
                 <Link to="/add-cat" className="w-full sm:w-auto">
@@ -189,7 +189,7 @@ const Home = () => {
                     className="h-14 w-full gap-2 px-8 text-base font-prompt border-mint/60 text-foreground bg-white/70 hover:bg-mint/20 transition-transform hover:scale-105"
                   >
                     <Plus className="h-5 w-5" />
-                    ลงประกาศหาบ้านให้สัตว์เลี้ยง
+                    ลงประกาศหาบ้าน
                   </Button>
                 </Link>
               </div>
@@ -311,8 +311,8 @@ const Home = () => {
         <div className="container mx-auto px-4">
           <div className="mb-8 flex flex-col gap-4 text-center sm:text-left sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <h2 className="text-3xl font-bold mb-2 font-prompt">สัตว์หาบ้านด่วน 🆘</h2>
-              <p className="text-muted-foreground font-prompt">น้องแมวและสุนัขเหล่านี้กำลังรอคุณอยู่</p>
+              <h2 className="text-3xl font-bold mb-2 font-prompt">รวมประกาศสุนัขหาบ้าน และ แมวหาบ้าน 🆘</h2>
+              <p className="text-muted-foreground font-prompt">น้องหมาและน้องเหมียวกำลังรอคอยความรัก พบกับลูกสุนัขแจกฟรี (คัดบ้าน) และสัตว์นิสัยดีที่ต้องการโอกาสที่สอง</p>
             </div>
             <Link to="/adopt" className="w-full sm:w-auto">
               <Button variant="outline" className="w-full font-prompt gap-2">
@@ -366,8 +366,8 @@ const Home = () => {
       <section className="py-16 bg-surface-lilac">
         <div className="container mx-auto px-4">
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold mb-2 font-prompt">แผนที่จุดพบสัตว์จร 🗺️</h2>
-            <p className="text-muted-foreground font-prompt">ช่วยกันดูแลทั้งแมวและสุนัขในพื้นที่ของคุณ</p>
+            <h2 className="text-3xl font-bold mb-2 font-prompt">แจ้งพิกัดสัตว์จรจัด 🗺️</h2>
+            <p className="text-muted-foreground font-prompt">ระบบแจ้งเตือนจุดพบสัตว์จร เพื่อระดมความช่วยเหลือจากอาสาสมัครในพื้นที่ ไม่ว่าจะเป็นการหาบ้าน การรักษา หรือการทำหมัน</p>
           </div>
           
           <Card className="overflow-hidden shadow-soft p-6 bg-white/85 border border-white/60">
@@ -406,9 +406,9 @@ const Home = () => {
       {/* CTA Section */}
       <section className="py-16 bg-gradient-warm text-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4 font-prompt">พร้อมที่จะเริ่มต้นแล้วหรือยัง?</h2>
+          <h2 className="text-3xl font-bold mb-4 font-prompt">ทำไมต้องใช้ Petskub?</h2>
           <p className="text-lg mb-8 opacity-90 font-prompt">
-            ร่วมเป็นส่วนหนึ่งในการช่วยเหลือแมวและสุนัขจร สร้างความเปลี่ยนแปลงที่ดีต่อชีวิตของพวกเขา
+            ค้นหาบ้านใหม่ได้ง่ายๆ – แหล่งรวมหมาหาบ้านและแมวหาบ้านจากทั่วประเทศ มีระบบกรองค้นหาตามจังหวัด สายพันธุ์ และความเร่งด่วน ลงประกาศฟรี ไม่มีค่าใช้จ่าย!
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link to="/adopt">

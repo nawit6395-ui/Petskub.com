@@ -52,7 +52,7 @@ const AddCat = () => {
       <div className="min-h-screen bg-background py-16">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4 font-prompt">กรุณาเข้าสู่ระบบ</h2>
-          <p className="text-muted-foreground mb-6 font-prompt">คุณต้องเข้าสู่ระบบก่อนเพื่อลงประกาศหาบ้านให้สัตว์เลี้ยง</p>
+          <p className="text-muted-foreground mb-6 font-prompt">คุณต้องเข้าสู่ระบบก่อนเพื่อลงประกาศหาบ้านให้หมา หาบ้านให้แมว หรือสัตว์เลี้ยงอื่นๆ ฟรี!</p>
           <Link to="/login"><Button className="font-prompt">เข้าสู่ระบบ</Button></Link>
         </div>
       </div>

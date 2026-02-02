@@ -29,12 +29,12 @@ const SuccessStories = () => {
           <div className="flex items-center justify-center gap-3 mb-4">
             <Sparkles className="w-8 h-8 text-success animate-pulse" />
             <h1 className="text-4xl font-bold font-prompt bg-gradient-to-r from-success to-success/60 bg-clip-text text-transparent">
-              เรื่องราวความสำเร็จ
+              เรื่องราวสัตว์ได้บ้านใหม่แล้ว
             </h1>
             <Heart className="w-8 h-8 text-success fill-success animate-pulse" />
           </div>
           <p className="text-muted-foreground font-prompt text-lg max-w-2xl mx-auto">
-            น้องแมวและสุนัขที่ได้บ้านใหม่แล้ว 🏡 ขอบคุณทุกท่านที่ให้ความรักและโอกาสครั้งใหม่กับพวกเขา
+            น้องหมาและน้องแมวที่ผ่านการรับเลี้ยงสุนัข รับเลี้ยงแมว ได้บ้านใหม่แล้ว 🏡 ขอบคุณทุกท่านที่ให้ความรักและโอกาสครั้งใหม่กับพวกเขา
           </p>
           {adoptedCats.length > 0 && (
             <p className="text-success font-prompt font-semibold mt-2">

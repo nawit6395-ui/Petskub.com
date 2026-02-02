@@ -40,9 +40,9 @@ const Knowledge = () => {
       <div className="container mx-auto px-4">
         <div className="mb-8 flex items-start justify-between">
           <div>
-            <h1 className="text-4xl font-bold mb-2 font-prompt">ความรู้ 📚</h1>
+            <h1 className="text-4xl font-bold mb-2 font-prompt">ความรู้ก่อนรับเลี้ยงสัตว์ 📚</h1>
             <p className="text-muted-foreground font-prompt">
-              บทความและคู่มือการดูแลแมวและสุนัขอย่างถูกวิธี
+              บทความและคู่มือการดูแลแมวและสุนัขอย่างถูกวิธี – 5 สิ่งที่มือใหม่ต้องรู้ก่อนตัดสินใจรับเลี้ยงสุนัขและแมว
             </p>
           </div>
           {isAdmin && (

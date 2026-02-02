@@ -11,7 +11,8 @@ import { useIsAdmin } from "@/hooks/useUserRole";
 import { alert } from "@/lib/alerts";
 import { useCreateConversation } from "@/hooks/useConversations";
 import { useNavigate } from "react-router-dom";
-import { FaFacebookF, FaLine } from "react-icons/fa";
+import { FaFacebookF, FaLine, FaXTwitter } from "react-icons/fa6";
+import { Link2 } from "lucide-react";
 
 interface CatCardProps {
   id?: string;
@@ -97,7 +98,14 @@ const CatCard = ({ id, name, age, province, district, image, images, story, gend
 
   const buildShareUrl = () => {
     if (typeof window === "undefined") return "";
+    // ใช้ /share/pet/{id} เพื่อให้ Social Media อ่าน OG Image ได้
     return id ? `${window.location.origin}/share/pet/${id}` : `${window.location.origin}/adopt`;
+  };
+
+  const buildDirectUrl = () => {
+    if (typeof window === "undefined") return "";
+    // URL ตรงไปหน้า adopt
+    return id ? `${window.location.origin}/adopt?pet=${id}` : `${window.location.origin}/adopt`;
   };
 
   const buildShareText = () =>
@@ -118,6 +126,37 @@ const CatCard = ({ id, name, age, province, district, image, images, story, gend
     const text = buildShareText();
     const shareUrl = `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(`${text}\n${url}`)}`;
     window.open(shareUrl, "_blank", "noopener,noreferrer");
+  };
+
+  const shareOnTwitter = () => {
+    if (typeof window === "undefined") return;
+    const url = buildShareUrl();
+    if (!url) return;
+    const text = `ช่วยกันแชร์ให้น้อง${name}ได้บ้านใหม่ 🐾\nอายุ: ${age} | พื้นที่: ${province}`;
+    const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+    window.open(shareUrl, "_blank", "noopener,noreferrer");
+  };
+
+  const handleNativeShare = async () => {
+    if (typeof navigator === "undefined") return;
+    const url = buildShareUrl();
+    const text = buildShareText();
+    
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: `ช่วยหาบ้านให้น้อง${name}`,
+          text: text,
+          url: url,
+        });
+      } catch (error) {
+        // User cancelled or error
+        console.log('Share cancelled or failed:', error);
+      }
+    } else {
+      // Fallback to copy
+      copyShareLink();
+    }
   };
 
   const copyShareLink = async () => {
@@ -156,7 +195,7 @@ const CatCard = ({ id, name, age, province, district, image, images, story, gend
         >
           <img 
             src={firstImage} 
-            alt={name}
+            alt={`${name} - ${gender === 'ชาย' ? 'น้องหมา' : gender === 'หญิง' ? 'น้องแมว' : 'สัตว์เลี้ยง'}หาบ้าน ${province}${district ? ` ${district}` : ''} อายุ ${age}`}
             loading="lazy"
             width={360}
             height={220}
@@ -368,39 +407,67 @@ const CatCard = ({ id, name, age, province, district, image, images, story, gend
                       aria-label="แชร์ช่วยหาบ้าน"
                     >
                       <Share2 className="w-4 h-4" />
+                      <span className="hidden sm:inline">แชร์</span>
                     </Button>
                   </PopoverTrigger>
-                  <PopoverContent align="end" className="w-48 rounded-2xl border border-amber-100 bg-white shadow-xl p-2 space-y-1">
-                    <button
-                      type="button"
-                      className="flex w-full items-center gap-3 rounded-xl px-3 py-2 text-sm font-prompt text-slate-700 hover:bg-amber-50"
-                      onClick={shareOnFacebook}
-                    >
-                      <span className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-600 text-white">
-                        <FaFacebookF className="text-sm" />
-                      </span>
-                      แชร์ผ่าน Facebook
-                    </button>
-                    <button
-                      type="button"
-                      className="flex w-full items-center gap-3 rounded-xl px-3 py-2 text-sm font-prompt text-slate-700 hover:bg-amber-50"
-                      onClick={shareOnLine}
-                    >
-                      <span className="flex h-8 w-8 items-center justify-center rounded-full bg-green-500 text-white">
-                        <FaLine className="text-lg" />
-                      </span>
-                      แชร์ผ่าน LINE
-                    </button>
-                    <button
-                      type="button"
-                      className="flex w-full items-center gap-3 rounded-xl px-3 py-2 text-sm font-prompt text-slate-700 hover:bg-amber-50"
-                      onClick={copyShareLink}
-                    >
-                      <span className="flex h-8 w-8 items-center justify-center rounded-full bg-amber-100 text-amber-700">
+                  <PopoverContent align="end" className="w-56 rounded-2xl border border-amber-100 bg-white shadow-xl p-3 space-y-2">
+                    <p className="text-xs font-prompt text-slate-500 mb-2">แชร์ช่วยน้อง{name}หาบ้าน</p>
+                    <div className="grid grid-cols-4 gap-2">
+                      <button
+                        type="button"
+                        className="flex flex-col items-center gap-1 p-2 rounded-xl hover:bg-blue-50 transition-colors"
+                        onClick={shareOnFacebook}
+                        title="แชร์ Facebook"
+                      >
+                        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 text-white shadow-md">
+                          <FaFacebookF className="text-base" />
+                        </span>
+                        <span className="text-[10px] font-prompt text-slate-600">Facebook</span>
+                      </button>
+                      <button
+                        type="button"
+                        className="flex flex-col items-center gap-1 p-2 rounded-xl hover:bg-green-50 transition-colors"
+                        onClick={shareOnLine}
+                        title="แชร์ LINE"
+                      >
+                        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-green-500 text-white shadow-md">
+                          <FaLine className="text-lg" />
+                        </span>
+                        <span className="text-[10px] font-prompt text-slate-600">LINE</span>
+                      </button>
+                      <button
+                        type="button"
+                        className="flex flex-col items-center gap-1 p-2 rounded-xl hover:bg-slate-100 transition-colors"
+                        onClick={shareOnTwitter}
+                        title="แชร์ X"
+                      >
+                        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-black text-white shadow-md">
+                          <FaXTwitter className="text-base" />
+                        </span>
+                        <span className="text-[10px] font-prompt text-slate-600">X</span>
+                      </button>
+                      <button
+                        type="button"
+                        className="flex flex-col items-center gap-1 p-2 rounded-xl hover:bg-amber-50 transition-colors"
+                        onClick={copyShareLink}
+                        title="คัดลอกลิงก์"
+                      >
+                        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-amber-100 text-amber-700 shadow-md">
+                          <Link2 className="w-4 h-4" />
+                        </span>
+                        <span className="text-[10px] font-prompt text-slate-600">คัดลอก</span>
+                      </button>
+                    </div>
+                    <div className="pt-2 border-t border-slate-100">
+                      <button
+                        type="button"
+                        className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-amber-400 to-orange-400 px-4 py-2.5 text-sm font-prompt text-white shadow-md hover:shadow-lg transition-shadow"
+                        onClick={handleNativeShare}
+                      >
                         <Share2 className="w-4 h-4" />
-                      </span>
-                      คัดลอกลิงก์
-                    </button>
+                        แชร์ผ่านแอปอื่น
+                      </button>
+                    </div>
                   </PopoverContent>
                 </Popover>
               </div>

@@ -41,9 +41,9 @@ const Adopt = () => {
         <div className="mb-12 grid gap-10 lg:grid-cols-[1.05fr_0.95fr] items-center">
           <div className="space-y-5 text-center lg:text-left">
             <div>
-              <h1 className="text-4xl font-bold mb-3 font-prompt">หาบ้านให้สัตว์เลี้ยง 🏠</h1>
+              <h1 className="text-4xl font-bold mb-3 font-prompt">รวมประกาศหมาหาบ้าน และ แมวหาบ้าน 🏠</h1>
               <p className="text-muted-foreground font-prompt text-base sm:text-lg">
-                เลือกดูโปรไฟล์น้องแมวและสุนัขที่เปิดรับเลี้ยง พร้อมภาพล่าสุดและข้อมูลสุขภาพจากผู้ดูแล
+                ทาสแมวห้ามพลาด! น้องเหมียวขี้อ้อน ลูกแมวหาบ้าน หลากหลายสีสัน รอให้คุณมารับไปดูแล ค้นหารับเลี้ยงแมวใกล้บ้านคุณ หรือเลือกรับเลี้ยงสุนัขที่ถูกชะตากับคุณวันนี้
               </p>
             </div>
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3">

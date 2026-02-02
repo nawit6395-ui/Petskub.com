@@ -378,8 +378,8 @@ const Report = () => {
     <div className="min-h-screen bg-background pb-8 pt-32 sm:pt-12 md:pt-8">
       <div className="container mx-auto px-4 max-w-4xl">
         <div className="mb-8">
-          <h1 className="text-3xl sm:text-4xl font-bold mb-2 font-prompt">แจ้งเจอสัตว์จร 📍</h1>
-          <p className="text-muted-foreground font-prompt">ช่วยกันบันทึกข้อมูลการพบแมวและสุนัขจรในพื้นที่</p>
+          <h1 className="text-3xl sm:text-4xl font-bold mb-2 font-prompt">แจ้งจุดพบสัตว์จรจัด 📍</h1>
+          <p className="text-muted-foreground font-prompt">ช่วยกันบันทึกจุดพบหมาหรือแมวจรจัด เพื่อให้อาสาสมัครช่วยเหลือหาบ้าน รักษา หรือทำหมันในพื้นที่</p>
           <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Button asChild className={`w-full sm:w-auto gap-2 font-prompt ${mapButtonClass}`}>
               <Link to="/reports/map">

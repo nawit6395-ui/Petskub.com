@@ -3,9 +3,9 @@ const Privacy = () => (
     <div className="mx-auto w-full max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
       <header className="mb-10 space-y-3">
         <p className="text-sm font-semibold uppercase tracking-wide text-emerald-600">Petskub Cookie Policy</p>
-        <h1 className="text-3xl font-bold text-slate-900 sm:text-4xl">นโยบายคุกกี้และความเป็นส่วนตัว</h1>
+        <h1 className="text-3xl font-bold text-slate-900 sm:text-4xl">นโยบายคุกกี้และความเป็นส่วนตัว Petskub</h1>
         <p className="text-base text-slate-600">
-          เอกสารนี้อธิบายว่าพวกเราใช้คุกกี้และเทคโนโลยีที่คล้ายกันเพื่อให้บริการชุมชนการช่วยเหลือสัตว์ได้อย่างปลอดภัยและโปร่งใส
+          เอกสารนี้อธิบายว่าเว็บไซต์หาบ้านให้หมา หาบ้านให้แมว ใช้คุกกี้และเทคโนโลยีเพื่อให้บริการชุมชนการช่วยเหลือสัตว์จรจัดได้อย่างปลอดภัยและโปร่งใส
         </p>
       </header>
 

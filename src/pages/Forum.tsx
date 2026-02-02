@@ -86,8 +86,8 @@ const Forum = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-2">เว็บบอร์ด</h1>
-          <p className="text-muted-foreground">แบ่งปันประสบการณ์และถามตอบเกี่ยวกับแมวและสุนัข</p>
+          <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-2">เว็บบอร์ดคนรักสัตว์</h1>
+          <p className="text-muted-foreground">แบ่งปันประสบการณ์รับเลี้ยงสุนัข รับเลี้ยงแมว ถามตอบเกี่ยวกับการดูแลสัตว์จรจัด สุขภาพ และอาหาร</p>
         </div>
         {user && (
           <Link to="/forum/create">
